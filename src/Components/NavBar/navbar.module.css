@@ -1,0 +1,19 @@
+.nav {
+  background: #0D58A6;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.item {
+  margin-bottom: 15px;
+  padding: 20px 40px 0;
+}
+
+.item a{
+  color: white;
+  text-decoration: none;
+}
+
+.item >a.active {
+  color: #ff9fcd;
+}

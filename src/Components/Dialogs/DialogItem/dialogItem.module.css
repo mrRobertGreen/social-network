@@ -1,0 +1,19 @@
+.wrapper {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+.item {
+  color: #0D58A6;
+  padding: 10px;
+}
+
+.name {
+  color: #0D58A6;
+}
+
+.avatar > img{
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+}

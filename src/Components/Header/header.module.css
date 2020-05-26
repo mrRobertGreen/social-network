@@ -1,0 +1,8 @@
+.header {
+  background: #0D58A6;
+  grid-column: 1/8  ;
+}
+
+.header > img {
+  width: 50px;
+}

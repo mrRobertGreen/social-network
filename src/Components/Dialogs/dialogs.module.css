@@ -1,0 +1,35 @@
+.wrapper{
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
+.dialogItems{
+  padding: 10px;
+}
+
+.messageItems{
+  padding: 10px;
+}
+
+.dialog{
+  padding: 10px;
+}
+
+.message{
+  padding: 10px;
+}
+
+.avatar > img{
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+}
+
+.sendMessage {
+  display: flex;
+  padding: 10px;
+}
+
+.sendButton{
+  margin: 10px;
+}

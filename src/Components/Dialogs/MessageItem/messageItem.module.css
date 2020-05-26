@@ -1,0 +1,9 @@
+.wrapper {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.item {
+  padding: 10px;
+}
