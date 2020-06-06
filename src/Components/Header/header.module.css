@@ -1,8 +1,16 @@
 .header {
   background: #0D58A6;
   grid-column: 1/8  ;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header > img {
   width: 50px;
+}
+
+.login {
+  color: white;
+  margin: 10px;
 }

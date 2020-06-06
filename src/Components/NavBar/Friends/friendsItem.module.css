@@ -3,10 +3,8 @@
 }
 
 .avatars {
-  margin-top: 10px;
-  display: grid;
-  justify-items: center;
-  grid-template-columns: 33% 33% 33%;
+  display: flex;
+  justify-content: center;
 }
 
 .avatars img{
@@ -30,7 +28,18 @@ a.active {
   text-align: center;
 }
 
+.names {
+  display: flex;
+  justify-content: center;
+}
+
 .name {
   padding: 10px;
   color: white;
+}
+
+.friends {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }

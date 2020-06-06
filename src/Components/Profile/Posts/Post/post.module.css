@@ -1,3 +1,14 @@
 .wrapper {
+  display: flex;
   margin-top: 10px;
+  flex-direction: column;
+}
+
+.like {
+  margin: 5px;
+}
+
+.likeWrapper {
+  display: flex;
+  margin: 5px;
 }

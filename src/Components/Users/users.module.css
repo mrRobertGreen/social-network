@@ -1,0 +1,27 @@
+.avatar > img{
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}
+
+.wrapper {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.userName {
+  padding: 10px;
+}
+
+.status{
+  padding: 10px;
+}
+
+.location{
+  padding: 10px;
+}
+
+.selectedPage {
+  font-weight: bold;
+}

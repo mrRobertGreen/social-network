@@ -2,31 +2,25 @@ import React from 'react';
 import './App.css';
 import "./reset.css"
 import Header from "./Components/Header/Header";
-import NavBar from "./Components/NavBar/NavBar";
-import Profile from "./Components/Profile/Profile";
-import Dialogs from "./Components/Dialogs/Dialogs";
 import {Route} from 'react-router'
 import News from "./Components/News/News";
 import Music from "./Components/Music/Music";
 import Settings from "./Components/Settings/Settings";
+import DialogsContainer from "./Components/Dialogs/DialogsContainer";
+import UsersContainer from "./Components/Users/UsersContainer";
+import NavBarContainer from "./Components/NavBar/NavBarContainer";
+import ProfileContainer from "./Components/Profile/ProfileContainer";
+import HeaderContainer from "./Components/Header/HeaderContainer";
 
-const App = (props) => {
-	debugger
+const App = () => {
 	return (
 		<div className="app-wrapper">
-			<Header/>
-			<NavBar sections={props.state.navBar.sectionData}
-			        friends={props.state.friendsData}/>
+			<HeaderContainer/>
+			<NavBarContainer/>
 			<div className="content-wrapper">
-				<Route path="/dialogs" render={() => <Dialogs
-					state={props.state.dialogsPage}
-					friends={props.state.friendsData}
-					dispatcher={props.dispatcher}
-				/>}/>
-				<Route path="/profile" render={() => <Profile
-					state={props.state.profilePage}
-					dispatcher={props.dispatcher}
-				/>}/>
+				<Route path="/dialogs" render={() => <DialogsContainer/>}/>
+				<Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
+				<Route path="/users" render={() => <UsersContainer/>}/>
 				<Route path="/news" render={() => <News/>}/>
 				<Route path="/music" render={() => <Music/>}/>
 				<Route path="/settings" render={() => <Settings/>}/>

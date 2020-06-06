@@ -4,7 +4,6 @@ import {NavLink} from "react-router-dom";
 import FriendsItem from "./Friends/FriendsItem";
 
 const NavBar = (props) => {
-
 	let sectionElements = props.sections.map(section => (
 		<div className={style.item}>
 				<NavLink to={section.link} activeClassName={style.active}>{section.name}</NavLink>
