@@ -40,15 +40,8 @@ class UsersContainer extends React.Component {
 			<>
 				{this.props.isFetching && <Preloader/>}
 				<Users
-					totalUsersCount={this.props.totalUsersCount}
-					pageSize={this.props.pageSize}
-					currentPage={this.props.currentPage}
-					users={this.props.users}
-					toggleIsFollowed={this.props.toggleIsFollowed}
+					{...this.props}
 					onPageChanged={this.onPageChanged}
-					currentPageInterval={this.props.currentPageInterval}
-					pageIntervalSize={this.props.pageIntervalSize}
-					toggleCurrentIntervalPage={this.props.toggleCurrentIntervalPage}
 				/>
 			</>
 
