@@ -1,3 +1,5 @@
+import {usersAPI} from "../api/api";
+
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const ADD_POST = "ADD-POST";
 const ADD_LIKE = "ADD-LIKE";
@@ -61,3 +63,12 @@ export const addLike = (id) => ({type: ADD_LIKE, id: id});
 export const updateNewPostText = (text) => ({type: UPDATE_NEW_POST_TEXT, text: text});
 export const addPost = () => ({type: ADD_POST});
 export const setProfile = (profile) => ({type: SET_PROFILE, profile});
+
+export const getProfile = (userId) => {
+	return (dispatch) => {
+		usersAPI.getProfile(userId)
+			.then(data => {
+				dispatch(setProfile(data));
+			});
+	}
+};

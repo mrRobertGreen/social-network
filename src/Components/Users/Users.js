@@ -4,12 +4,10 @@ import style from "./users.module.css";
 import {NavLink} from "react-router-dom";
 
 const Users = (props) => {
-	// let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-
 	let pages = [];
 
-	for (let i=props.currentPageInterval*10; i < props.currentPageInterval*10+props.pageIntervalSize; i++) {
-		pages.push(i+1);
+	for (let i = props.currentPageInterval * 10; i < props.currentPageInterval * 10 + props.pageIntervalSize; i++) {
+		pages.push(i + 1);
 	}
 
 	return (
@@ -47,9 +45,17 @@ const Users = (props) => {
 							</div>
 						</div>
 						<div className={style.followBtn}>
-							<button onClick={() => props.toggleIsFollowed(user.id)}>
-								{user.followed ? "Unfollow" : "Follow"}
-							</button>
+							{
+								user.followed ?
+									<button disabled={props.inFollowingProgress.some(id => id === user.id)}
+									        onClick={() => props.unfollowThunk(user.id)}>
+										Unfollow
+									</button> :
+									<button disabled={props.inFollowingProgress.some(id => id === user.id)}
+									        onClick={() => props.followThunk(user.id)}>
+										Follow
+									</button>
+							}
 						</div>
 					</div>))
 			}

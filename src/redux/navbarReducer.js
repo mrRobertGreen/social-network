@@ -1,5 +1,7 @@
 import {users} from "./usersState";
 
+const SET_FOLLOWING = "SET_FOLLOWING";
+
 let initialState = {
 	sectionData: [
 		{name: "Profile", link: "/profile"},
@@ -9,11 +11,21 @@ let initialState = {
 		{name: "Music", link: "/music"},
 		{name: "Settings", link: "/settings"},
 	],
-	friendsData: users.filter(item => item.isFriend)
+	following: []
 };
 
 const navBarReducer = (state = initialState, action) => {
-	return {...state}
+	switch (action.type) {
+		case SET_FOLLOWING:
+			return {
+				...state,
+				following: action.following,
+			};
+		default:
+			return {...state}
+	}
 };
+
+const setFollowing = (following) => ({type: SET_FOLLOWING, following});
 
 export default navBarReducer;

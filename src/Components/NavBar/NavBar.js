@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./navbar.module.css"
 import {NavLink} from "react-router-dom";
-import FriendsItem from "./Friends/FriendsItem";
+import FollowingItem from "./Following/FollowingItem";
 
 const NavBar = (props) => {
 	let sectionElements = props.sections.map(section => (
@@ -14,7 +14,7 @@ const NavBar = (props) => {
 	return (
 		<nav className={style.nav}>
 			{sectionElements}
-			<FriendsItem friends={props.friends}/>
+			<FollowingItem following={props.following}/>
 		</nav>
 	);
 };
