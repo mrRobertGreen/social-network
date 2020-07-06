@@ -3,9 +3,17 @@ import {connect} from "react-redux";
 import Users from "./Users";
 import {
 	setCurrentPage,
-	toggleCurrentIntervalPage, followThunk, unfollowThunk, getUsers,
+	toggleCurrentIntervalPage, followThunk, unfollowThunk, requestUsers,
 } from "../../redux/usersReducer";
 import Preloader from "../common/Preloader/Preloader";
+import {
+	getCurrentPage,
+	getCurrentPageInterval, getInFollowingProgress,
+	getIsFetching, getPageIntervalSize,
+	getPageSize,
+	getTotalUsersCount,
+	getUsers
+} from "../../redux/usersSelectors";
 
 class UsersContainer extends React.Component {
 	componentDidMount() {
@@ -17,7 +25,8 @@ class UsersContainer extends React.Component {
 		this.props.getUsers(this.props.pageSize, pageNumber);
 	};
 
-	render() {
+	render() { // render() вызывается, когда приходят новые props или изменяется local state
+		console.log("RENDER");
 		return (
 			<>
 				{this.props.isFetching && <Preloader/>}
@@ -31,21 +40,21 @@ class UsersContainer extends React.Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
-	users: state.usersPage.users,
-	totalUsersCount: state.usersPage.totalUsersCount,
-	currentPage: state.usersPage.currentPage,
-	pageSize: state.usersPage.pageSize,
-	isFetching: state.usersPage.isFetching,
-	currentPageInterval: state.usersPage.currentPageInterval,
-	pageIntervalSize: state.usersPage.pageIntervalSize,
-	inFollowingProgress: state.usersPage.inFollowingProgress,
+const mapStateToProps = (state) => ({ // mapStateToProps вызывается при каждом изменениии в state
+	users: getUsers(state),            // он сравнивает свою часть state с новым state и в зависимости от этого либо
+	totalUsersCount: getTotalUsersCount(state),  // прокидывает новые props, либо ничего не делает
+	currentPage: getCurrentPage(state),    // объекты не равны <=> это разные объекты
+	pageSize: getPageSize(state),
+	isFetching: getIsFetching(state),
+	currentPageInterval: getCurrentPageInterval(state),
+	pageIntervalSize: getPageIntervalSize(state),
+	inFollowingProgress: getInFollowingProgress(state),
 });
 
 const mapDispatchToProps = {
 	setCurrentPage,
 	toggleCurrentIntervalPage,
-	getUsers,
+	getUsers: requestUsers,
 	followThunk,
 	unfollowThunk,
 };

@@ -1,0 +1,9 @@
+.wrapper {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  margin: 5px;
+}

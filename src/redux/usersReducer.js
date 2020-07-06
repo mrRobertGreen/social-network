@@ -90,7 +90,7 @@ export const toggleIsFetching = () => ({type: TOGGLE_IS_FETCHING});
 export const toggleCurrentIntervalPage = (direction) => ({type: TOGGLE_CURRENT_INTERVAL_PAGE, direction});
 export const toggleIsFollowingProgress = (isFollowingProgress, id) => ({type:TOGGLE_IS_FOLLOWING_PROGRESS, isFollowingProgress, id});
 
-export const getUsers = (pageSize, currentPage) => {
+export const requestUsers = (pageSize, currentPage) => {
 	return (dispatch) => {
 		dispatch(toggleIsFetching());
 		usersAPI.getUsers(pageSize, currentPage)

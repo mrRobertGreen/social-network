@@ -1,7 +1,11 @@
 .wrapper {
-  margin: 0 auto;
+  margin: 10px;
 }
 
 .addPost > div{
   margin: 10px;
+}
+
+.form {
+  margin: 5px;
 }

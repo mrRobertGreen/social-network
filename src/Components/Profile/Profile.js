@@ -1,8 +1,8 @@
 import React from "react";
 import style from "./profile.module.css"
-import ProfileInfo from "./ProfiileInfo/ProfileInfo";
-import MyPostsContainer from "./Posts/MyPostsContainer";
+import MyPosts from "./Posts/MyPosts";
 import Preloader from "../common/Preloader/Preloader";
+import ProfileInfoWithHooks from "./ProfiileInfo/ProfileInfoWithHooks";
 
 const Profile = (props) => {
 	if (!props.profile) {
@@ -11,8 +11,8 @@ const Profile = (props) => {
 
 	return (
 		<div className={style.wrapper}>
-			<ProfileInfo profile={props.profile}/>
-			<MyPostsContainer/>
+			<ProfileInfoWithHooks {...props}/>
+			<MyPosts/>
 		</div>
 	)
 };
