@@ -6,7 +6,6 @@ import News from "./Components/News/News";
 import Music from "./Components/Music/Music";
 import Settings from "./Components/Settings/Settings";
 import Dialogs from "./Components/Dialogs/Dialogs";
-import UsersContainer from "./Components/Users/UsersContainer";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
 import Header from "./Components/Header/Header";
 import Login from "./Components/Login/Login";
@@ -15,6 +14,8 @@ import {connect} from "react-redux";
 import {initialize} from "./redux/appReducer"
 import Preloader from "./Components/common/Preloader/Preloader";
 import NavBar from "./Components/NavBar/NavBar";
+
+const UsersContainer = React.lazy(() => import("./Components/Users/UsersContainer"))
 
 class App extends React.Component {
 	componentDidMount() {
@@ -31,13 +32,15 @@ class App extends React.Component {
 				<Header/>
 				<NavBar/>
 				<div className="content-wrapper">
-					<Route path="/dialogs" render={() => <Dialogs/>}/>
-					<Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
-					<Route path="/users" render={() => <UsersContainer/>}/>
-					<Route path="/news" render={() => <News/>}/>
-					<Route path="/music" render={() => <Music/>}/>
-					<Route path="/settings" render={() => <Settings/>}/>
-					<Route path="/login" render={() => <Login/>}/>
+					<React.Suspense fallback={<div>Loading...</div>}>
+						<Route path="/users" component={UsersContainer}/>
+						<Route path="/dialogs" component={Dialogs}/>
+						<Route path="/profile/:userId?" component={ProfileContainer}/>
+						<Route path="/news" render={() => <News/>}/>
+						<Route path="/music" render={() => <Music/>}/>
+						<Route path="/settings" render={() => <Settings/>}/>
+						<Route path="/login" render={() => <Login/>}/>
+					</React.Suspense>
 				</div>
 			</div>
 		)

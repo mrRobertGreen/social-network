@@ -1,63 +1,34 @@
 import React from "react";
-import userAvatar from "../../assets/images/user.jpg"
-import style from "./users.module.css";
-import {NavLink} from "react-router-dom";
+import Paginator from "../common/Paginator/Paginator";
+import UserItem from "./UserItem/UserItem";
 
-const Users = (props) => {
-	let pages = [];
-
-	for (let i = props.currentPageInterval * 10; i < props.currentPageInterval * 10 + props.pageIntervalSize; i++) {
-		pages.push(i + 1);
-	}
+const Users = ({currentPageInterval,
+	               intervalSize,
+	               inFollowingProgress,
+	               unfollowThunk,
+	               followThunk,
+	               onPageChanged,
+	               toggleCurrentIntervalPage,
+	               currentPage,
+	               pageSize,
+	               totalUsersCount, ...props}) => {
 
 	return (
 		<div>
-			<div>
-				<span onClick={() => props.toggleCurrentIntervalPage("left")}>{"<"}</span>
-				{pages.map(pageNumber => (<span
-					onClick={() => props.onPageChanged(pageNumber)}
-					className={props.currentPage === pageNumber && style.selectedPage}>{pageNumber}
-					</span>))}
-				<span onClick={() => props.toggleCurrentIntervalPage("right")}>{">"}</span>
-			</div>
+			<Paginator intervalSize={intervalSize}
+			           onPageChanged={onPageChanged}
+			           currentPage={currentPage}
+			           pageSize={pageSize}
+			           totalItemsCount={totalUsersCount}
+			/>
 
 			{
 				props.users.map(user => (
-					<div key={user.id} className={style.wrapper}>
-						<NavLink to={`profile/${user.id}`}>
-							<div className={style.avatar}>
-								<img src={user.photos.small ? user.photos.small : userAvatar}/>
-							</div>
-						</NavLink>
-
-						<div className={style.userName}>
-							{user.name}
-						</div>
-						<div className={style.status}>
-							{user.status ? user.status : "no status"}
-						</div>
-						<div className={style.location}>
-							<div>
-								{"this.props.location.city"}
-							</div>
-							<div>
-								{"this.props.location.country"}
-							</div>
-						</div>
-						<div className={style.followBtn}>
-							{
-								user.followed ?
-									<button disabled={props.inFollowingProgress.some(id => id === user.id)}
-									        onClick={() => props.unfollowThunk(user.id)}>
-										Unfollow
-									</button> :
-									<button disabled={props.inFollowingProgress.some(id => id === user.id)}
-									        onClick={() => props.followThunk(user.id)}>
-										Follow
-									</button>
-							}
-						</div>
-					</div>))
+					<UserItem user={user}
+					          inFollowingProgress={inFollowingProgress}
+					          unfollowThunk={unfollowThunk}
+					          followThunk={followThunk}
+					/>))
 			}
 		</div>
 	)

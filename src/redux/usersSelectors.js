@@ -27,8 +27,8 @@ export const getIsFetching = (state) => {
 export const getCurrentPageInterval = (state) => {
 	return state.usersPage.currentPageInterval
 };
-export const getPageIntervalSize = (state) => {
-	return state.usersPage.pageIntervalSize
+export const getIntervalSize = (state) => {
+	return state.usersPage.intervalSize
 };
 export const getInFollowingProgress = (state) => {
 	return state.usersPage.inFollowingProgress
